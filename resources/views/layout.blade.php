@@ -9,6 +9,8 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
         <!-- Styles -->
         <style>
@@ -21,19 +23,12 @@
             }
         </style>
     </head>
-    <body class="antialiased">
-        <div class="blogs">
-
-       <div class="blog">
-        <h1 >First blog :</h1>
-       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis veniam obcaecati harum. In, id eaque fuga deserunt tempora voluptatibus iste inventore velit itaque dignissimos. Nesciunt cumque id alias obcaecati consectetur! Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate odio itaque ratione ad quae, ut velit repellendus cupiditate repudiandae autem sit quia amet neque dolorem, a aliquam corrupti eius dolor?</p>
-    </div>
-    <div class="blog">
-       <h1 >Second blog :</h1>
-       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis veniam obcaecati harum. In, id eaque fuga deserunt tempora voluptatibus iste inventore velit itaque dignissimos. Nesciunt cumque id alias obcaecati consectetur! Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate odio itaque ratione ad quae, ut velit repellendus cupiditate repudiandae autem sit quia amet neque dolorem, a aliquam corrupti eius dolor?</p>
-    </div>
-    <div class="blog">
-        <h1 >Third blog :</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis veniam obcaecati harum. In, id eaque fuga deserunt tempora voluptatibus iste inventore velit itaque dignissimos. Nesciunt cumque id alias obcaecati consectetur! Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate odio itaque ratione ad quae, ut velit repellendus cupiditate repudiandae autem sit quia amet neque dolorem, a aliquam corrupti eius dolor?</p>
-     </div> </div></body>
-</html>
+    <nav><div class="topnav">
+        <a class="active" href="/">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <form method="GET" action="#">
+        <input type="text" name="search"placeholder="Search..."></form>
+      </div></nav>
+    @yield('container')
+   
