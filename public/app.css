@@ -144,4 +144,16 @@ i{
 .form-control{
   width: 500px !important;
 }
+.regilabel{
+  display: flex;
+  text-align: justify;
+  justify-content: center;
+ align-items: center;
 
+}
+.alert{
+  position: fixed!important;
+  z-index: 1!important;
+  bottom: 0!important;
+  right: 0!important;
+}
