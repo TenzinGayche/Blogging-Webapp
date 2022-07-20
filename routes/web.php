@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,44 +17,25 @@ use App\Models\Category;
 |
 */
 
-Route::get('/', function () {
-    $posts = Post::latest()
-        ->with('category', 'user');
-        try {
-           if(request('search')){
-            $posts->where('title','like','%'.request('search').'%')
-            ->orWhere('body','like','%'.request('search').'%');
-        }
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
-       
-       
+Route::get('/', [PostController::class, 'index']);
+Route::get('posts/{post:slug}', [PostController::class, 'post']);
 
-    return view('posts', [
-        'posts' => $posts->paginate(6),
-        'categories'=>Category::all()
-       
-    ]);
-});
-Route::get('posts/{post:slug}', function (Post $post) {
-    return view('post', [
-        'post' => $post->load(['category','user']),
-    ]);
-});
-Route::get('post/edit/{post:slug}', function (Post $post) {
-    return view('poste', [
-        'post' => $post->load(['category','user']),
-    ]);
-});
+Route::get('post/edit/{post:slug}', [PostController::class, 'poste']);
 Route::get('categories/{category:slug}', function (Category $category) {
-
     return view('posts', [
-        'posts' => Post::where('category_id', $category->id)->with('category', 'user')->paginate(1),
+        'posts' => Post::where('category_id', $category->id)
+            ->with('category', 'user')
+            ->paginate(),
     ]);
 });
 Route::get('users/{user:name}', function (User $user) {
     return view('posts', [
-        'posts' => $user->posts->load(['category','user']),
+        'posts' => Post::where('user_id', $user->id)
+            ->with('category', 'user')
+            ->paginate(),
     ]);
+});
+
+Route::get('/register', function () {
+    return view('register');
 });
