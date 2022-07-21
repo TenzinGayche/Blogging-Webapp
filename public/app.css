@@ -48,7 +48,7 @@
   }
   
   /* Style the search box inside the navigation bar */
-  .topnav input[type=text] {
+  .topnav input[type=text]{
     float: right;
     padding: 6px;
     border: none;
@@ -136,13 +136,17 @@ i{
 }
 .register{
   margin-top: 5rem;
-  display: flex;
-  justify-content: center;
+  
+
+
+
   
 
 }
 .form-control{
   width: 500px !important;
+}
+
 }
 .regilabel{
   display: flex;

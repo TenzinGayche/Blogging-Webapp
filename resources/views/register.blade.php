@@ -1,8 +1,8 @@
 @extends('layout')
-@yield('Navbar')
+
 @section('container')
 
-    <body  class=" register container">
+    <body  class=" register">
   
       <form class="regiterf " method="POST" action="">
         @csrf

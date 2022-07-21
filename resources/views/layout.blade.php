@@ -24,11 +24,18 @@
         </style>
     </head>
     <nav><div class="topnav   ">
-        <a class="active" href="/">Home</a>
-        <a href="/register"r>Register</a>
+        <a class="active fw-bold" href="/">Home</a>
+        @if(!auth()->check())        
+        <a class=" fw-bold" href="/register">Register</a>
+        
+        @else
+        <input class="btn" type="submit" name="search" value='Logout'placeholder="Search..."></form>
+     
+        @endif
        
         <form method="GET" action="#">
-        <input type="text" name="search"placeholder="Search..."></form>
+        <input type="text" name="search"placeholder="Search...">
+      
       </div></nav>
     @yield('container')
    
