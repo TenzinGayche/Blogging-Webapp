@@ -7,8 +7,10 @@
             <div class="blog">
                 <?php
                 echo "<h1>{$post->title}:</h1></a>
-                                       <form method=\"GET\" action=\"#\">
-                                        <textarea >\"{$post->body}\"</textarea></form>";
+                                       <form method=\"GET\" action=\"\">
+                                        <input class=\"editor\" name=\"body\" placeholde=\"{$post->body}\"type=\"txt\" >
+                                       
+                                       </form>"
                 ?>
 
     </body>

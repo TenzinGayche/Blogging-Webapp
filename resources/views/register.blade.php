@@ -4,7 +4,7 @@
 
     <body  class=" register">
   
-      <form class="regiterf " method="POST" action="">
+      <form class="regiterf " method="POST" action="/register">
         @csrf
         <Label for="floatingInputValue">Username</Label>
         <input class="form-control " name="username" type="text">
