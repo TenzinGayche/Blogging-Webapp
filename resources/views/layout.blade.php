@@ -61,11 +61,15 @@
        
 
         <form method="GET" action="">
+          <input class="loginsearch" type="text" name="search" placeholder="Search..."></form>
             @csrf
-            <input class="loginsearch" type="text" name="search" placeholder="Search..."></form>
             <form method="POST" action="/logout">
-                @csrf
-                    <input type="submit" class="fw-bold p-3 mr-1" value="Logout"></form>
+              @csrf
+            <input type="submit" class="fw-bold p-2 mt-2 mr-1 ml-2 btn btn-danger " value="Logout"></form>
+            
+         
+                
+                   
         @endif
     </div>
        

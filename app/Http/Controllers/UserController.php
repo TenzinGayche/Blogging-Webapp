@@ -1,22 +1,37 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Comment;
-use App\Models\Post;
-use Illuminate\Http\Request;
 
-class CommentController extends Controller
+use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Category;
+use App\Models\Post;
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index (User $user) {
+        if (request('search')) {
+            $posts
+               ->where('user_id', $user->id)
+                ->where('title', 'like', '%' . request('search') . '%')
+                ->orWhere('body', 'like', '%' . request('search') . '%')
+                ->where('user_id', $user->id);
+                return view('posts', [ 
+                    'posts' => $posts->get(),
+                    'categories' =>Category::all()
+                ]);
+        }
+        return view('posts', [
+            'posts' => Post::where('user_id', $user->id)
+                ->with('category', 'user')
+                ->paginate(),
+            'categories' =>Category::all()   
+        ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -33,20 +48,8 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Post $post)
+    public function store(Request $request)
     {
-
-        $attribute= request()->validate([
-
-            'body'=>'required',
-            
-        ]);
-       $post->comment()->create([
-        'post_id'=>$post->id,
-        'user_id'=>request()->user()->id,
-        'body'=>request('body')
-       ]);
-     return back();
         //
     }
 

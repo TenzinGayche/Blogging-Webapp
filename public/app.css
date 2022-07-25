@@ -195,3 +195,13 @@ i {
 .card{
   width: 600px!important;
 }
+section textarea {
+
+  margin-top: .5rem;
+  width: 600px;
+  height: 90px;
+  text-align: justify;
+
+}
+
+

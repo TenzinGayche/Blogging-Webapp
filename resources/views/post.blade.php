@@ -21,18 +21,45 @@
         ";
  ?>
        </div>
+       
        <section class=" rounded">
-        <div class="container my-5 py-5 text-dark ">
+        <div class="container text-dark ">
           <div class="row d-flex justify-content-center">
             <div class="col-md-12 col-lg-10 col-xl-8">
-              <div class="d-flex justify-content-between align-items-left mb-4">
-                <h4 class="text-dark mb-0 float-right"> Comments</h4>
+              <div class="d-flex justify-content-center  mb-4">
+
+                
+                @if (!$post->comment->isEmpty())
+                <h4 class="text-dark "> Comments</h4>
 
                     
                   </div>
                 </div>
               </div>
+              @auth
+              <div class="card mb-3">
+                <div class="card-body">
+              <img class="rounded-circle shadow-1-strong me-3 "
+                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp" alt="avatar" width="40"
+                      height="40" />
+                    
+              <i class="fa fa-fire-extinguisher" aria-hidden="true"></i>
+              <form class="d-flex flex-column align-items-end mt-2" method="POST" action="/post/{{$post->slug}}/comment">
+                @csrf
+                
+                <textarea name="body"  class="border p-3"id="" cols="30" rows="10" required></textarea>
+                <button class="comment-button btn btn-sm btn-primary float-right mt-2 " style="width:90px;" type="submit">Post</button>
+              </form>
+                        </div>
+                      </div>
+                      @else 
+      <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 2000)" x-show="show">
+        <p class="alert alert-warning ">Login to write comment</p>
+    </div>
+      @endauth
+             
       <?php
+
       foreach ($post->comment as $comment) {
     
       
@@ -40,7 +67,7 @@
                 <div class=\"card-body\">
                   <div class=\"d-flex flex-start\">
                     <img class=\"rounded-circle shadow-1-strong me-3\"
-                      src=\"https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp\" alt=\"avatar\" width=\"40\"
+                      src=\"https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20({$comment->user->id}).webp\" alt=\"avatar\" width=\"40\"
                       height=\"40\" />
                     <div class=\"w-100\">
                       <div class=\"d-flex justify-content-between align-items-center mb-3\">
@@ -71,6 +98,34 @@
             
         </div>
       </section>
+      @else 
+   
+       @auth
+              <div class="card mb-3">
+                <div class="card-body">
+              <img class="rounded-circle shadow-1-strong me-3 "
+                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp" alt="avatar" width="40"
+                      height="40" />
+                    
+              <i class="fa fa-fire-extinguisher" aria-hidden="true"></i>
+              <form class="d-flex flex-column align-items-end mt-2" method="POST" action="/post/{{$post->slug}}/comment">
+                @csrf
+                
+                <textarea name="body"  class="border p-3"id="" cols="30" rows="10" required></textarea>
+                <button class="comment-button btn btn-sm btn-primary float-right mt-2 " style="width:90px;" type="submit">Post</button>
+              </form>
+                        </div>
+                      </div>
+                      @else 
+      <h6>No comments</h6>
+    </div>
+  
+  
+   
+      @endauth
+
+      @endif
+      
         </div>
         
    

@@ -8,6 +8,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,31 +24,13 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/', [PostController::class, 'index']);
 Route::get('posts/{post:slug}', [PostController::class, 'post']);
-
-Route::get('post/edit/{post:slug}', [PostController::class, 'poste']);
+Route::get('post/edit/{post:slug}', [PostController::class, 'edit']);
 Route::get('categories/{category:slug}',[CategoryController::class, 'index']);
-
-Route::get('users/{user:name}', function (User $user) {
-    if (request('search')) {
-        $posts
-           ->where('user_id', $user->id)
-            ->where('title', 'like', '%' . request('search') . '%')
-            ->orWhere('body', 'like', '%' . request('search') . '%')
-            ->where('user_id', $user->id);
-            return view('posts', [ 
-                'posts' => $posts->get(),
-                'categories' =>Category::all()
-            ]);
-    }
-    return view('posts', [
-        'posts' => Post::where('user_id', $user->id)
-            ->with('category', 'user')
-            ->paginate(),
-        'categories' =>Category::all()   
-    ]);
-});
-
+Route::get('posts/{post:slug}', [PostController::class, 'post']);
+Route::get('users/{user:name}', [UserController::class, 'index']);
 Route::get('register', [RegisterController::class, 'create'])->middleware("guest");
 Route::post('register', [RegisterController::class, 'store'])->middleware("guest");
 Route::post('logout', [SessionController::class, 'destroy'])->middleware("auth");
 Route::post('login', [SessionController::class, 'store'])->middleware("guest");
+Route::post('post/{post:slug}/comment', [CommentController::class, 'store']);
+Route::get('admin/posts/create', [PostController::class, 'create']);

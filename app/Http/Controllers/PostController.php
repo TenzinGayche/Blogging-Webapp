@@ -36,11 +36,17 @@ class PostController extends Controller
             'post' => $post->load(['category','user']),
         ]);
     }
-    public function poste(Post $post)
+    public function edit(Post $post)
     {
         return view('poste', [
             'post' => $post->load(['category','user']),
         ]);
+    }
+    public function create(){
+        if(auth()->user()?->name!='Tenzin Gayche'){
+            abort(403);
+        }
+        dd("Admin");
     }
     
 }
