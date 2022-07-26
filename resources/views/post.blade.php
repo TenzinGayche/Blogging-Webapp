@@ -40,7 +40,7 @@
               <div class="card mb-3">
                 <div class="card-body">
               <img class="rounded-circle shadow-1-strong me-3 "
-                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp" alt="avatar" width="40"
+                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20({{auth()->id()}}).webp" alt="avatar" width="40"
                       height="40" />
                     
               <i class="fa fa-fire-extinguisher" aria-hidden="true"></i>
@@ -104,7 +104,7 @@
               <div class="card mb-3">
                 <div class="card-body">
               <img class="rounded-circle shadow-1-strong me-3 "
-                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp" alt="avatar" width="40"
+                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20({{auth()->id()}}).webp" alt="avatar" width="40"
                       height="40" />
                     
               <i class="fa fa-fire-extinguisher" aria-hidden="true"></i>

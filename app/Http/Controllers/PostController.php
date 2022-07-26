@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
+use Illuminate\Validation\Rule;
 
 use Illuminate\Http\Request;
 
@@ -43,10 +44,22 @@ class PostController extends Controller
         ]);
     }
     public function create(){
-        if(auth()->user()?->name!='Tenzin Gayche'){
-            abort(403);
-        }
-        dd("Admin");
+        return view('admin' , [
+            'categories' => Category::all(),
+        ]);
+    }
+    public function store(){
+        $attribute= request()->validate([
+            'title'=>'required',
+            'slug'=>['required',Rule::unique('posts','slug')],
+            'excerpt'=>'required',
+            'category_id'=>['required',Rule::exists('categories','id')],
+            'body'=>'required|min:10',
+
+        ]);
+        $attribute['user_id']=auth()->id();
+        Post::create($attribute);
+        return redirect("/")->with('success','New post created');
     }
     
 }
