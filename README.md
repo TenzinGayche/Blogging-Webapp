@@ -36,6 +36,6 @@
             <li>Users can view blog posts on the homepage and click on a post to view its full content.</li>
             <li>Users can leave comments on blog posts by filling</li>
         <h2>Preview</h2>
-        <img width="300" alt="Screenshot 2023-04-11 at 7 25 48 PM" src="https://user-images.githubusercontent.com/72848416/231191465-27fd840e-6613-49d6-b62b-cdaa76ebd960.png">
+        <img width="700" alt="Screenshot 2023-04-11 at 7 50 50 PM" src="https://user-images.githubusercontent.com/72848416/231192898-66a8a642-8456-405b-a90e-0f2c72a63c95.png">
         
 
