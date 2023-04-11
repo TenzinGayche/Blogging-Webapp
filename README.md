@@ -1,49 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laravel Blogging Website</title>
-    <style>
-        /* Custom styles for the README.md file */
-        h1, h2, h3, h4, h5, h6 {
-            margin-top: 0.5em;
-        }
-        h2 {
-            font-size: 2em;
-        }
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        li {
-            margin-bottom: 0.5em;
-        }
-        a {
-            color: #337ab7;
-            text-decoration: none;
-        }
-        a:hover {
-            color: #23527c;
-            text-decoration: underline;
-        }
-        code {
-            background-color: #f5f5f5;
-            font-family: Consolas, monospace;
-            font-size: 0.9em;
-            padding: 0.2em 0.4em;
-            border-radius: 0.3em;
-        }
-        pre {
-            background-color: #f5f5f5;
-            padding: 1em;
-            overflow-x: auto;
-            font-family: Consolas, monospace;
-            font-size: 0.9em;
-            border-radius: 0.3em;
-        }
-    </style>
-</head>
+
 <body>
     <header>
         <h1>Laravel Blogging Website</h1>
@@ -72,6 +27,7 @@
             <li>Creating, reading, updating, and deleting blog posts</li>
             <li>User authentication</li>
             <li>Commenting on posts</li>
+             <li>Admin privileges </li>
         </ul>
         <h2>Usage</h2>
         <ol>
