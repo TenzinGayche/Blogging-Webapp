@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;

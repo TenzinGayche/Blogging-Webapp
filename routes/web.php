@@ -24,7 +24,9 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [PostController::class, 'index']);
 Route::get('posts/{post:slug}', [PostController::class, 'post']);
-Route::get('post/edit/{post:slug}', [PostController::class, 'edit']);
+Route::get('post/edit/{post:slug}', [PostController::class, 'edit'])->middleware("admin");
+Route::patch('post/edit/{post:slug}', [PostController::class, 'update'])->middleware("admin");
+Route::delete('post/edit/{post:slug}', [PostController::class, 'destroy'])->middleware("admin");
 Route::get('categories/{category:slug}',[CategoryController::class, 'index']);
 Route::get('posts/{post:slug}', [PostController::class, 'post']);
 Route::get('users/{user:name}', [UserController::class, 'index']);
@@ -35,3 +37,4 @@ Route::post('login', [SessionController::class, 'store'])->middleware("guest");
 Route::post('post/{post:slug}/comment', [CommentController::class, 'store']);
 Route::get('admin/posts/create', [PostController::class, 'create'])->middleware("admin");
 Route::post('admin/posts/create', [PostController::class, 'store'])->middleware("admin");
+

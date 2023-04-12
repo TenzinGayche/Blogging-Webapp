@@ -26,54 +26,75 @@
         </style>
     </head>
     <nav><div class="topnav   ">
-        <a class="active fw-bold p-3" href="/">Home</a>
-        @if(!auth()->check())        
-        <a class=" fw-bold p-3" href="/register">Register</a>
-        <div class="dropdown p-2">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-            Login
-            </button>
-            <form method='POST' action="/login" class="dropdown-menu p-4">
-                @csrf
-              <div class="mb-3">
-                <label for="exampleDropdownFormEmail2" class="form-label">Email address</label>
-                <input type="email" class="form-control"name='email' id="exampleDropdownFormEmail2" placeholder="email@example.com">
-              </div>
-              <div class="mb-3">
-                <label for="exampleDropdownFormPassword2" class="form-label">Password</label>
-                <input type="password" class="form-control"  name='password' id="exampleDropdownFormPassword2" placeholder="Password">
-              </div>
-              <div class="mb-3">
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-                  <label class="form-check-label" for="dropdownCheck2">
-                    Remember me
-                  </label>
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Log in</button>
-            </form>
-          </div>
-        <form method="GET" action="">
-            <input type="text" name="search"placeholder="Search..."></form>
-        
-        @else
+        <a class="fw-bold p-3" href="/">Home</a>
        
-
+       
+        @if(!auth()->check())
         <form method="GET" action="">
-          <input class="loginsearch" type="text" name="search" placeholder="Search..."></form>
-            @csrf
-            <form method="POST" action="/logout">
-              @csrf
-            <input type="submit" class="fw-bold p-2 mt-2 mr-1 ml-2 btn btn-danger " value="Logout"></form>
-            
+          <input type="text" name="search"placeholder="Search..."></form>
+       <div class="d-flex " >  
+        <a class=" fw-bold p-3" href="/register">Register</a>
+       
+        
+            <div class="dropdown p-2">
+              <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+              Login
+              </button>
+              <form method='POST' action="/login" class="dropdown-menu p-4">
+                  @csrf
+                <div class="mb-3">
+                  <label for="exampleDropdownFormEmail2" class="form-label">Email address</label>
+                  <input type="email" class="form-control"name='email' id="exampleDropdownFormEmail2" placeholder="email@example.com">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleDropdownFormPassword2" class="form-label">Password</label>
+                  <input type="password" class="form-control"  name='password' id="exampleDropdownFormPassword2" placeholder="Password">
+                </div>
+                <div class="mb-3">
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="dropdownCheck2">
+                    <label class="form-check-label" for="dropdownCheck2">
+                      Remember me
+                    </label>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-dark">Log in</button>
+              </form>
+            </div>
+          </div>     
+        @else 
+        <form method="GET" action="">
+          <input type="text" name="search"placeholder="Search..."></form>
+
+        <div class="d-flex">
          
-                
-                   
+        <div class="btn-group " >
+          <button type="button" class="btn btn-light dropdown-toggle py-1" data-bs-toggle="dropdown" aria-expanded="false">
+           {{auth()->user()->name}}
+          </button>
+          
+          <ul class="dropdown-menu ">
+            
+           
+            <li> @if(request()->route('admin/posts/create'))
+              <a class="dropdown-item active border-bottom"  href="/admin/posts/create">New post</a>
+            @else 
+            <a class="dropdown-item border-bottom "  href="/admin/posts/create">New post</a> 
+           
+          @endif</li>
+            <li><hr class="dropdown-divider"></li>
+            <li><form method="POST" action="/logout">
+              @csrf
+            <input type="submit" class="fw-bold p-2 mt-2 mr-1 ml-2 btn btn-danger " value="Logout"></form></li>
+          </ul>
+        </div>
+        <div>
+            @csrf
+            
+          </div>
+          </div>        
         @endif
     </div>
-       
-      
       </div></nav>
     @yield('container')
    

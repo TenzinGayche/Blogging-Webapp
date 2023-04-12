@@ -7,6 +7,7 @@
         <?php 
             echo "
                 <h1>{$post->title}:</h1></a>
+                <img class=\"rounded\" src=\"/storage/$post->thumbnail\" alt=\Italian Trulli\" / >
                 <p>by <i>{$post->user->name}</i> in 
    <i><a href=\"/categories/{$post->category->slug}\">{$post->category->name}</a></i></p>
   

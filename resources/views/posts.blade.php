@@ -2,7 +2,7 @@
 @section('container')
 
 
-<body class="antialiased">
+<body class="antialiased ">
 
     <div class="blogs">
         <div class="mb-2 mt-3">
@@ -13,11 +13,12 @@
  </div>
 
         <?php foreach ($posts as $post) {
-            echo "<div class=\"blog container bg-light rounded p-5 mt-5\">
+            echo "<div class=\"blog shadow container bg-light rounded p-3 mt-3\">
                 <a href=\"/posts/$post->slug\">
-                <h3 class=\"fw-bold\">$post->title</h3></a>
+                <h3 class=\"fw-bold\">{$post->title}</h3></a>
+                <img class=\"rounded\" src=\"/storage/$post->thumbnail\" alt=\Italian Trulli\" / >
                 <h6 class='fw-bold mt-2'>by <a  href=\"/users/{$post->user->name}\"> {$post->user->name}</a></h6>
-       <a class=\"btn btn-primary p-1 mb-2\" href=\"/categories/{$post->category->slug}\">{$post->category->name}</a>
+       <a class=\"btn btn-dark p-1 mb-2\" href=\"/categories/{$post->category->slug}\">{$post->category->name}</a>
                <p>$post->excerpt</p>
             </div>";
         }
